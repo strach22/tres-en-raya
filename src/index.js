@@ -6,7 +6,7 @@ class Square extends React.Component {
   render() {
     return (
       <button className="square">
-        {/* TODO */}
+        {this.props.player}
       </button>
     );
   }
@@ -14,9 +14,8 @@ class Square extends React.Component {
 
 class Board extends React.Component {
   renderSquare(i) {
-    return <Square />;
+    return <Square player={this.props.tablero[i]} />;
   }
-
   render() {
     const status = 'Siguiente Jugador: X';
 
@@ -44,11 +43,17 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
+  constructor(){
+    super();
+    this.state={
+      tablero:["X","O","","","","","","",""]
+    }
+  }
   render() {
     return (
       <div className="game">
         <div className="game-board">
-          <Board />
+          <Board tablero={this.state.tablero}/>
         </div>
         <div className="game-info">
           <div>{/* status */}</div>

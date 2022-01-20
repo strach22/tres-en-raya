@@ -61,7 +61,7 @@ class Game extends React.Component {
   message=()=>{
     if(this.isWinner()) return "El ganador es: " + (this.state.turn === "X" ? "O" : "X");
     else if(this.state.tablero.join("").length===9) return "Empate"
-    else return "Siguiente Jugador: " + this.state.turn
+    else return "Siguiente jugador: " + this.state.turn
   }
   isWinner = () => {
     const tab=this.state.tablero;

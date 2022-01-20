@@ -58,9 +58,14 @@ class Game extends React.Component {
       winner: "",
     };
   }
+  message=()=>{
+    if(this.isWinner()) return "El ganador es: " + (this.state.turn === "X" ? "O" : "X");
+    else if(this.state.tablero.join("").length===9) return "Empate"
+    else return "Siguiente Jugador: " + this.state.turn
+  }
   isWinner = () => {
     const tab=this.state.tablero;
-    if ((tab[0]===tab[4]&&tab[4]===tab[8]&&tab[8]!=="")||
+    return ((tab[0]===tab[4]&&tab[4]===tab[8]&&tab[8]!=="")||
       (tab[0]===tab[1]&&tab[1]===tab[2]&&tab[2]!=="")||
       (tab[0]===tab[3]&&tab[3]===tab[6]&&tab[6]!=="")||
       (tab[1]===tab[4]&&tab[4]===tab[7]&&tab[7]!=="")||
@@ -68,13 +73,10 @@ class Game extends React.Component {
       (tab[2]===tab[5]&&tab[5]===tab[8]&&tab[8]!=="")||
       (tab[3]===tab[4]&&tab[4]===tab[5]&&tab[5]!=="")||
       (tab[6]===tab[7]&&tab[7]===tab[8]&&tab[8]!=="")
-    ){
-      this.setState({tablero:["", "", "", "", "", "", "", "", ""]})
-      return "El ganador es: " + (this.state.turn === "X" ? "O" : "X");
-    }else return "Siguiente Jugador: " + this.state.turn
-  };
+    )};
   handleTurn = (id) => {
-    if(this.state.winner===""){const newTablero = this.state.tablero;
+    if(!this.isWinner()&&this.state.tablero[id]===""){
+      const newTablero = this.state.tablero;
       newTablero[id] = this.state.turn;
       const changeTurn = this.state.turn === "X" ? "O" : "X";
       this.setState({ tablero: newTablero, turn: changeTurn });
@@ -94,7 +96,7 @@ class Game extends React.Component {
           />
         </div>
         <div className="game-info">
-          <div className="status">{this.isWinner()}</div>
+          <div className="status">{this.message()}</div>
           <button className="reinicio" onClick={this.reseteo}>Reiniciar</button>
           <ol>{/* TODO */}</ol>
         </div>

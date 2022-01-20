@@ -87,18 +87,21 @@ class Game extends React.Component {
   }
   render() {
     return (
-      <div className="game">
-        <div className="game-board">
-          <Board
-            tablero={this.state.tablero}
-            handleTurn={this.handleTurn}
-            turn={this.state.turn}
-          />
-        </div>
-        <div className="game-info">
-          <div className="status">{this.message()}</div>
-          <button className="reinicio" onClick={this.reseteo}>Reiniciar</button>
-          <ol>{/* TODO */}</ol>
+      <div>
+        <h1 style={{margin:"10%"}}>Tres en Raya</h1>
+        <div className="game">
+          <div className="game-board">
+            <Board
+              tablero={this.state.tablero}
+              handleTurn={this.handleTurn}
+              turn={this.state.turn}
+            />
+          </div>
+          <div className="game-info">
+            <div className="status">{this.message()}</div>
+            <button className="reinicio" onClick={this.reseteo}>Reiniciar</button>
+            <ol>{/* TODO */}</ol>
+          </div>
         </div>
       </div>
     );

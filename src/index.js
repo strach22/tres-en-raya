@@ -74,7 +74,7 @@ class Game extends React.Component {
       (tab[3]===tab[4]&&tab[4]===tab[5]&&tab[5]!=="")||
       (tab[6]===tab[7]&&tab[7]===tab[8]&&tab[8]!=="")
     )};
-  handleTurn = (id) => {
+  handleTurn = id => {
     if(!this.isWinner()&&this.state.tablero[id]===""){
       const newTablero = this.state.tablero;
       newTablero[id] = this.state.turn;
@@ -88,7 +88,7 @@ class Game extends React.Component {
   render() {
     return (
       <div>
-        <h1 style={{margin:"10%"}}>Tres en Raya</h1>
+        <h1 style={{marginLeft:"7%"}}>Tres en Raya</h1>
         <div className="game">
           <div className="game-board">
             <Board
@@ -107,7 +107,5 @@ class Game extends React.Component {
     );
   }
 }
-
-// ========================================
 
 ReactDOM.render(<Game />, document.getElementById("root"));
